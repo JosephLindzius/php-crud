@@ -49,8 +49,10 @@ function openConnection()
 
 $pdo = openConnection();
 var_dump($pdo);
-$sql = "SELECT * FROM crud.student WHERE id = :id";
+$sql = "SELECT name FROM crud.teacher WHERE class = :class";
 $stmt = $pdo->prepare($sql);
-$stmt->execute(['id'=> "1"]);
+$stmt->execute(['class' => "1"]);
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 var_dump($data);
+
+
