@@ -1,19 +1,5 @@
 <?php
-declare(strict_types=1);
-ini_set('display_errors', "1");
-ini_set('display_startup_errors', "1");
-error_reporting(E_ALL);
-session_start();
-
-
-function selectWHere(PDO $pdo, string $query, string $column, string $value): array
-{
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':' . $column, $value);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
-}
-
+require 'Student.php';
 function whatIsHappening()
 {
 
@@ -49,10 +35,41 @@ function openConnection()
 
 $pdo = openConnection();
 var_dump($pdo);
-$sql = "SELECT name FROM crud.teacher WHERE class = :class";
+$sql = "SELECT * FROM crud.student";
 $stmt = $pdo->prepare($sql);
-$stmt->execute(['class' => "1"]);
+$stmt->execute();
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($data);
 
+function getFromTable ($table)
+{
+    $pdo = openConnection();
+    var_dump($pdo);
+    $sql = "SELECT * FROM crud." . $table;
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $data;
+}
+var_dump(getFromTable("classroom"));
+//var_dump($data);
+$students = [];
+foreach ($data as $student) {
+   // var_dump($student['name']);
+   $person = new Student($student['name'], $student['email'], $student['class']);
+   //var_dump($person);
+   array_push($students,$person);
+}
+var_dump($students);
+
+function selectWHere(PDO $pdo, string $query, string $column, string $value): array
+{
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':' . $column, $value);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+$sql = "SELECT name FROM crud.student WHERE class = :class";
+var_dump(selectWHere($pdo, $sql, 'class', "1"));
 
