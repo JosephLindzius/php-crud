@@ -1,34 +1,32 @@
 <?php
 
 
-class StudentController
+class ClassroomController
 {
-
     public function render()
     {
         require 'Model/Connect.php';
+        //this is just example code, you can remove the line below
         $connect = new Connect();
         $pdo = $connect->openConnection();
-        $students = $connect->getFromTable($pdo, 'student');
-        $allStudents = [];
-        foreach ($students as $student) {
-            $person = new Student($student['id'], $student['name'], $student['email'], $student['class']);
-            array_push($allStudents,$person);
+        $classes = $connect->getFromTable($pdo, 'classroom');
+
+        $allClasses = [];
+        foreach ($classes as $class) {
+            $person = new Classroom($class['id'], $class['name'], $class['location']);
+            array_push($allClasses,$person);
         }
 
-        //this is just example code, you can remove the line below
-  //LOGIC TO ADD NEW
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $sql = "INSERT INTO student (name, email, class) VALUES (:name, :email, :class)";
+            $sql = "INSERT INTO classroom (name, location) VALUES (:name, :location)";
             $connect = new Connect();
             $pdo = $connect->openConnection();
             $stmt = $pdo->prepare($sql);
             if ($stmt->execute([
                 'name' => $_POST['name'],
-                'email' => $_POST['email'],
-                'class' => $_POST['class']
+                'location' => $_POST['location']
             ])) {
-               echo 'i worked';
+                echo 'i worked';
             } else {
                 echo 'failed';
             };
@@ -38,9 +36,6 @@ class StudentController
         // then the view will actually display them.
 
         //load the view
-        require 'View/student.php';
+        require 'View/classroom.php';
     }
-
 }
-
-
