@@ -17,7 +17,7 @@ class StudentController
         }
 
         //this is just example code, you can remove the line below
-  //LOGIC TO ADD NEW
+  //LOGIC TO ADD NEW STUDENT
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "INSERT INTO student (name, email, class) VALUES (:name, :email, :class)";
             $connect = new Connect();

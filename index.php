@@ -31,14 +31,25 @@ require 'Controller/StudentController.php';
 require  'Controller/ClassroomController.php';
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
-//$controller = new HomepageController();
-//$controller->render($_GET, $_POST);
 
-//$controller = new StudentController();
-//$controller->render();
-
-$controller = new ClassroomController();
-$controller->render();
+$_GET['link'] = 0;
+switch ($_GET['link']) {
+    case "0":
+        $controller = new HomepageController();
+        $controller->render($_GET, $_POST);
+        break;
+    case "1":
+        $controller = new StudentController();
+        $controller->render();
+        break;
+    case "2":
+        $controller = new ClassroomController();
+        $controller->render();
+        break;
+    default:
+        echo "Your favorite color is neither red, blue, nor green!";
+}
+?>
 
 
 
