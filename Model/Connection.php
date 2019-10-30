@@ -1,5 +1,5 @@
 <?php
-require 'Student.php';
+//require 'Student.php';
 function whatIsHappening()
 {
 
@@ -54,10 +54,10 @@ var_dump(getFromTable("classroom"));
 //var_dump($data);
 $students = [];
 foreach ($data as $student) {
-   // var_dump($student['name']);
-   $person = new Student($student['name'], $student['email'], $student['class']);
+// var_dump($student['name']);
+   //$person = new Student($student['id'], $student['name'], $student['email'], $student['class']);
    //var_dump($person);
-   array_push($students,$person);
+  // array_push($students,$person);
 }
 var_dump($students);
 

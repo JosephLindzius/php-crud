@@ -13,15 +13,15 @@ require 'Controller/HomepageController.php';
 require 'Controller/StudentController.php';
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
-$controller = new HomepageController();
+//$controller = new HomepageController();
+//$controller->render($_GET, $_POST);
+
+$controller = new StudentController();
 $controller->render($_GET, $_POST);
 
 
-$controller = new StudentController();
-var_dump($controller->getTeacherByClassId());
 
-$controllerTwo = new StudentController();
-var_dump($controllerTwo->getWhateverYouWant("SELECT * FROM crud.classroom"));
 
-$bob = new Student('bob', "g@g.com", "1");
-$bob->getName();
+
+
+
