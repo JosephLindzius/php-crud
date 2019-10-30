@@ -10,12 +10,14 @@ class Teacher
 
     /**
      * Teacher constructor.
+     * @param $id
      * @param $name
      * @param $email
      * @param $class
      */
-    public function __construct($name, $email, $class)
+    public function __construct($id, $name, $email, $class)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->class = $class;
