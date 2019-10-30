@@ -17,7 +17,7 @@ require 'Controller/StudentController.php';
 //$controller->render($_GET, $_POST);
 
 $controller = new StudentController();
-$controller->render($_GET, $_POST);
+$controller->render();
 
 
 
