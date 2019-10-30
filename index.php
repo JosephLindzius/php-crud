@@ -25,31 +25,40 @@ function whatIsHappening()
 require 'Model/User.php';
 require 'Model/Student.php';
 require 'Model/Classroom.php';
+require 'Model/Teacher.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/StudentController.php';
 require  'Controller/ClassroomController.php';
+require  'Controller/TeacherController.php';
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
 
-$_GET['link'] = 0;
-switch ($_GET['link']) {
-    case "0":
-        $controller = new HomepageController();
-        $controller->render($_GET, $_POST);
-        break;
-    case "1":
+if ($_GET['link'] !== null) {
+    if ($_GET['link'] == 'student') {
         $controller = new StudentController();
         $controller->render();
-        break;
-    case "2":
+    }
+
+    if ($_GET['link'] == 'classroom') {
         $controller = new ClassroomController();
         $controller->render();
-        break;
-    default:
-        echo "Your favorite color is neither red, blue, nor green!";
+    }
+
+    if ($_GET['link'] == 'teacher') {
+        $controller = new TeacherController();
+        $controller->render();
+    }
+
+    if ($_GET['link'] == 'homepage') {
+        $controller = new HomepageController();
+        $controller->render($_GET, $_POST);
+    }
+} else {
+    $controller = new HomepageController();
+    $controller->render($_GET, $_POST);
 }
-?>
+
 
 
 
