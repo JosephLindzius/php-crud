@@ -12,11 +12,11 @@
 <body>
     <?php require 'includes/header.php'?>
     <section>
-<!--        <h4>Hello --><?php //echo $user->getName()?><!--,</h4>-->
         <p>You can see all the teachers in this page.</p>
 
-        <button type="button" class="btn btn-secondary mb-2 align-right">Add a New Teacher</button>
-
+        <div class="text-right">
+            <button type="button" class="btn btn-secondary mb-2 align-right">Add a New Teacher</button>
+        </div>
 
         <table class="table table-striped">
             <thead>
@@ -30,16 +30,17 @@
             </tr>
             </thead>
             <tbody>
-            <?php ?>
+            <?php foreach ($allTeachers as $teacher): ?>
+
             <tr>
-                <th scope="row"><?php ?></th>
-                <td><?php ?></td>
-                <td><?php ?></td>
-                <td>1</td>
+                <th><?php echo $teacher->getId(); ?></th>
+                <td><?php echo $teacher->getName(); ?></td>
+                <td><?php echo $teacher->getEmail()?></td>
+                <td><?php echo $teacher->getClass()?></td>
                 <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
                 <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
             </tr>
-            <?php ?>
+            <?php endforeach; ?>
             </tbody>
         </table>
 
