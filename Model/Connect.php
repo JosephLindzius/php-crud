@@ -25,6 +25,14 @@ class Connect
 
     }
 
+    public function getFromTable ($pdo, $table)
+    {
+        $sql = "SELECT * FROM crud." . $table;
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
 
 
 

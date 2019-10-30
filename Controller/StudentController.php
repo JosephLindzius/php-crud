@@ -4,25 +4,31 @@ require './Model/Connect.php';
 class StudentController
 {
 
-    public function getTeacherByClassId () {
-        $data = new Connect();
-        $pdo = $data->openConnection();
-        $sql = "SELECT name FROM crud.teacher WHERE class = :class";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['class' => "1"]);
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
-    }
+    public function render(array $GET, array $POST)
+    {
+        $connect = new Connect();
+        $pdo = $connect->openConnection();
+        $students = $connect->getFromTable($pdo, 'student');
 
-    public function getWhateverYouWant ($query) {
-        $data = new Connect();
-        $pdo = $data->openConnection();
-        $sql = $query;
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+        // this belongs in the classroom class
+        $classes = $connect->getFromTable($pdo, 'classroom');
+
+        $allStudents = [];
+        foreach ($students as $student) {
+            $person = new Student($student['id'], $student['name'], $student['email'], $student['class']);
+            array_push($allStudents,$person);
+        }
+
+        //this is just example code, you can remove the line below
+
+
+        //you should not echo anything inside your controller - only assign vars here
+        // then the view will actually display them.
+
+        //load the view
+        require 'View/student.php';
     }
 
 }
+
 
