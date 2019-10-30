@@ -14,8 +14,13 @@
     <section>
         <p>You can see all the teachers in this page.</p>
 
-        <div class="text-right">
-            <button type="button" class="btn btn-secondary mb-2 align-right">Add a New Teacher</button>
+        <div class="text-right mb-2">
+            <form action="#" method="POST">
+                name : <input type="text" name="name">
+                Email : <input type="text" name="email">
+                Class : <input type="text" name="class">
+                <button type="button" name="new" class="btn btn-secondary btn-sm align-right">Add a New Teacher</button>
+            </form>
         </div>
 
         <table class="table table-striped">
@@ -37,8 +42,8 @@
                 <td><?php echo $teacher->getName(); ?></td>
                 <td><?php echo $teacher->getEmail()?></td>
                 <td><?php echo $teacher->getClass()?></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm">Edit</button></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm">Delete</button></td>
+                <td><button type="button" class="btn btn-outline-dark btn-sm" name="edit">Edit</button></td>
+                <td><button type="button" class="btn btn-outline-dark btn-sm" name="delete">Delete</button></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
