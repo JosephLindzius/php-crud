@@ -10,16 +10,18 @@
     <title>Student</title>
 </head>
 <body>
-<?php require 'includes/header.php'?>
+<?php require 'includes/header.php'
+
+?>
 <section>
     <p>You can see all the students in this page.</p>
-
+    <form action="#" method="POST"> <button type="submit" name="tableDelete" class="btn btn-secondary btn-sm align-right value='1'">Delete All</button></form>
     <div class="text-right mb-2">
         <form action="#" method="POST">
             name : <input type="text" name="name">
             Email : <input type="text" name="email">
             Class : <input type="text" name="class">
-            <button type="button" name="new" class="btn btn-secondary btn-sm align-right">Add a New Student</button>
+            <button type="submit" name="new" class="btn btn-secondary btn-sm align-right">Add a New Student</button>
         </form>
     </div>
 
@@ -42,8 +44,8 @@
                 <td><?php echo $student->getName(); ?></td>
                 <td><?php echo $student->getEmail()?></td>
                 <td><?php echo $student->getClass()?></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="edit">Edit</button></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="delete">Delete</button></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="edit" value="<?php echo $student->getId(); ?>">Edit</button></form></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="delete" value="<?php echo $student->getId(); ?>">Delete</button></form></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

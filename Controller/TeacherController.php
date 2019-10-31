@@ -1,10 +1,10 @@
 <?php
-//require './Model/Connect.php';
+
 
 class TeacherController
 {
     public function render()
-    {
+    {   require 'Model/Connect.php';
         $con = new Connect();
         $pdo = $con->openConnection();
         $teachers = $con->getFromTable($pdo, 'teacher');
