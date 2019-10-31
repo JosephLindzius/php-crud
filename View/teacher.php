@@ -42,8 +42,8 @@
                 <td><?php echo $teacher->getName(); ?></td>
                 <td><?php echo $teacher->getEmail()?></td>
                 <td><?php echo $teacher->getClass()?></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="edit">Edit</button></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="delete">Delete</button></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="edit" value="<?php echo $teacher->getId(); ?>">Edit</button></form></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="delete" value="<?php echo $teacher->getId(); ?>">Delete</button></form></td>
             </tr>
             <?php endforeach; ?>
             </tbody>

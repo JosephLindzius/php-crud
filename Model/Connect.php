@@ -95,6 +95,25 @@ class Connect
         $_POST = [];
     }
 
+    public function updateTeacher (PDO $pdo, $id, $name, $email, $class) {
+
+        $sql = "UPDATE teacher
+                SET name = :name, email = :email, class = :class
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute([
+            'id' => $id,
+            'name' => $name,
+            'email' => $email,
+            'class' => $class
+        ])) {
+            echo 'i worked';
+        } else {
+            echo 'failed';
+        };
+        $_POST = [];
+    }
+
     public function addClassroom (PDO $pdo, $name, $location) {
         $sql = "INSERT INTO classroom (name, location) VALUES (:name, :location)";
         $stmt = $pdo->prepare($sql);

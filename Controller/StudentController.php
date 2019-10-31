@@ -27,7 +27,7 @@ class StudentController
             $_POST = [];
             header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
         }
-        //TODO edit student
+        //edit student
         if (array_key_exists('edit', $_POST)) {
             require 'Controller/EditController.php';
             $controller = new EditController();
@@ -38,9 +38,8 @@ class StudentController
             $pdo = $connect->openConnection();
             $connect->updateStudent($pdo, $_SESSION['editId'], $_POST['editName'], $_POST['editEmail'], $_POST['editClass']);
             $_POST = [];
-            $_SESSION = [];
-            var_dump($_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
-           header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+            $_SESSION = [];;
+            header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
         }
 
         //delete student
@@ -70,11 +69,6 @@ class StudentController
             header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
         }
 
-
-        //you should not echo anything inside your controller - only assign vars here
-        // then the view will actually display them.
-
-        //load the view
         require 'View/student.php';
     }
 
