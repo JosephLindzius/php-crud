@@ -1,7 +1,7 @@
 <?php
 
 
-class EditController
+class EditClassroomController
 {
 
     public function render($table, $id)
@@ -18,6 +18,6 @@ class EditController
         // then the view will actually display them.
 
         //load the view
-        require 'View/edit.php';
+        require 'View/editClassroom.php';
     }
 }

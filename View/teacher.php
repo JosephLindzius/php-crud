@@ -10,16 +10,19 @@
     <title>Teacher</title>
 </head>
 <body>
-    <?php require 'includes/header.php'?>
+<?php require 'includes/header.php';
+require  'includes/navbar.php';
+?>
     <section>
         <p>You can see all the teachers in this page.</p>
-
+        <form action="#" method="POST"> <button type="submit" name="tableDelete" class="btn btn-secondary btn-sm align-right value='1'">Delete All</button></form>
+        <form action="#" method="POST"> <button type="submit" name="tableCreate" class="btn btn-secondary btn-sm align-right value='1'">Create Table</button></form>
         <div class="text-right mb-2">
             <form action="#" method="POST">
                 name : <input type="text" name="name">
                 Email : <input type="text" name="email">
                 Class : <input type="text" name="class">
-                <button type="button" name="new" class="btn btn-secondary btn-sm align-right">Add a New Teacher</button>
+                <button type="submit" name="new" class="btn btn-secondary btn-sm align-right">Add a New Teacher</button>
             </form>
         </div>
 

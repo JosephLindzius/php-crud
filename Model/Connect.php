@@ -37,6 +37,17 @@ class Connect
         return $data;
     }
 
+    public function getFromTableById (PDO $pdo, $table, $id)
+    {
+        $sql = "SELECT * FROM " . $table . " WHERE id = :id ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
     public function getClassroomName (PDO $pdo, $id) {
         $sql = 'SELECT name FROM classroom WHERE id = :id';
         $stmt = $pdo->prepare($sql);
@@ -121,6 +132,23 @@ class Connect
         if ($stmt->execute([
             'name' => $name,
             'location' => $location,
+        ])) {
+            echo 'i worked';
+        } else {
+            echo 'failed';
+        };
+        $_POST = [];
+    }
+    public function updateClassroom (PDO $pdo, $id, $name, $location) {
+
+        $sql = "UPDATE classroom
+                SET name = :name, location = :location
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute([
+            'id' => $id,
+            'name' => $name,
+            'location' => $location
         ])) {
             echo 'i worked';
         } else {

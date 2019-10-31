@@ -10,7 +10,9 @@
     <title>Profile</title>
 </head>
 <body>
-<?php require 'includes/header.php' ?>
+<?php require 'includes/header.php';
+require  'includes/navbar.php';
+?>
 
 <section class="m-5">
     <p>You can a <strong><?php echo $status . " " . $user->getName() ?></strong>'s detail in this page.</p>

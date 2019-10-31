@@ -10,8 +10,8 @@
     <title>Student</title>
 </head>
 <body>
-<?php require 'includes/header.php'
-
+<?php require 'includes/header.php';
+require  'includes/navbar.php';
 ?>
 <section>
     <p>You can see all the students in this page.</p>

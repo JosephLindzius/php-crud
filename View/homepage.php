@@ -8,7 +8,9 @@
     <title>Becode | Overview</title>
 </head>
 <body>
-    <?php require 'includes/header.php'?>
+    <?php require 'includes/header.php';
+          require  'includes/navbar.php';
+    ?>
     <section>
         <h2>You can see overview of the database in this page.</h2>
         <h2>Students</h2>

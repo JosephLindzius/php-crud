@@ -7,7 +7,7 @@ class IndividualController
     {
         // these 2 lines need to be removed after link with real variables($table, $post)
         $table = "student";
-        $post = 1;
+        $post = 2;
 
         // get connection to the database
         require 'Model/Connect.php';
