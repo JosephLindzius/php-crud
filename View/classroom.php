@@ -39,8 +39,8 @@
                 <th><?php echo $class->getId(); ?></th>
                 <td><?php echo $class->getName(); ?></td>
                 <td><?php echo $class->getLocation()?></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="edit">Edit</button></td>
-                <td><button type="button" class="btn btn-outline-dark btn-sm" name="delete">Delete</button></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="edit" value="<?php echo $class->getId(); ?>">Edit</button></form></td>
+                <td><form method="post" action="#"><button type="submit" class="btn btn-outline-dark btn-sm" name="delete" value="<?php echo $class->getId(); ?>">Delete</button></form></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
