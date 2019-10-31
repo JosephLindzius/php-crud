@@ -95,7 +95,16 @@ class Connect
     }
 
     public function createTable (PDO $pdo, $table) {
-        $sql = 'CREATE TABLE '.$table;
+        $sql = "create table crud.'$table.'
+(
+    id    int auto_increment
+        primary key,
+    name  varchar(255) not null,
+    email varchar(255) null,
+    class int          not null,
+    constraint student_classroom_id_fk
+        foreign key (class) references crud.classroom (id)
+);";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
