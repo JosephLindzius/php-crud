@@ -1,0 +1,50 @@
+DROP table student;
+DROP table teacher;
+DROP table classroom;
+
+create table classroom
+(
+id int auto_increment primary key,
+name varchar(255) not null,
+location varchar(255) not null
+);
+
+create table student
+(
+id int auto_increment primary key,
+name varchar(255) not null,
+email varchar(255) not null,
+class int null,
+constraint student_classroom_id_fk
+    foreign key (class) references classroom (id) ON DELETE SET NULL
+);
+
+create table teacher
+(
+id int auto_increment primary key,
+name varchar(255) not null,
+email varchar(255) not null,
+class int null,
+constraint teacher_classroom_id_fk
+foreign key (class) references classroom (id) ON DELETE SET NULL
+);
+
+
+INSERT INTO `crud`.`classroom` (`name`, `location`) VALUES ('Lamarr', 'Antwerp');
+INSERT INTO `crud`.`classroom` (`name`, `location`) VALUES ('Waterzooi', 'Gent');
+INSERT INTO `crud`.`classroom` (`name`, `location`) VALUES ('Gierts', 'Antwerp');
+INSERT INTO `crud`.`classroom` (`name`, `location`) VALUES ('Waffel', 'Liege');
+
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Bona', 'bona@becode.com', 1);
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Joe', 'joe@becode.com', 1);
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Allison', 'allison@becode.com', 3);
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Kin', 'kin@becode.com', 3);
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Judy', 'judy@becode.com', 2);
+INSERT INTO `crud`.`student` (`name`, `email`, `class`) VALUES ('Tom', 'Tom@becode.com', 4);
+
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Koen', 'koen@becode.com', 1);
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Cicco', 'cicco@becode.com', 1);
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Filip', 'filip@becode.com', 3);
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Alex', 'alex@becode.com', 2);
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Kevin', 'kevon@becode.com', 2);
+INSERT INTO `crud`.`teacher` (`name`, `email`, `class`) VALUES ('Tom', 'tom@becode.com', 4)
