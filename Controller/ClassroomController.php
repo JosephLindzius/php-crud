@@ -17,6 +17,14 @@ class ClassroomController
             array_push($allClasses,$person);
         }
 
+        if(array_key_exists('delete',$_POST)){
+            $connect = new Connect();
+            $pdo = $connect->openConnection();
+            $connect->deleteById($pdo, 'classroom', $_POST['delete']);
+            $_POST = [];
+            header("Location: http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "INSERT INTO classroom (name, location) VALUES (:name, :location)";
             $connect = new Connect();

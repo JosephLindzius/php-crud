@@ -26,13 +26,14 @@ class Connect
         return $data;
     }
 
-    public function getFromTableById (PDO $pdo, $table, $id) {
-        $sql = "SELECT * FROM " . $table. " WHERE id = :id";
+    public function getIndividual (PDO $pdo, $table, $id)
+    {
+        $sql = "SELECT * FROM " . $table . " WHERE id = :id ";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            "id" => $id
+            'id' => $id
         ]);
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch();
         return $data;
     }
 
@@ -42,7 +43,7 @@ class Connect
         $stmt->execute([
             'id' => $id
         ]);
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
 

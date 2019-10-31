@@ -10,13 +10,24 @@ class StudentController
         $pdo = $connect->openConnection();
         $students = $connect->getFromTable($pdo, 'student');
         $studentId = [];
+
         $allStudents = [];
+     /*   foreach ($students as $student) {
+            $person = new Student($student['id'], $student['name'], $student['email'], $student['class']);
+            array_push($allStudents,$person);
+        } */
+//        $classroom = $connect ->getClassroomName($pdo, $student['id']);
+//        $classroom = $connect ->getClassroomName($pdo, $user->getId());
+
+
         foreach ($students as $i => $student) {
             array_push($studentId, $student['id']);
             $classroomName = $connect->getClassroomName($pdo, $student['class']);
             $person = new Student($student['id'], $student['name'], $student['email'], $classroomName[0]['name']);
             array_push($allStudents,$person);
         }
+
+
         //add student
         if (array_key_exists('name', $_POST) &&
             array_key_exists('email', $_POST) &&
