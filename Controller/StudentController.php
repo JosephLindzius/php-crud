@@ -48,7 +48,7 @@ class StudentController
         if(array_key_exists('tableCreate', $_POST)) {
             $connect = new Connect();
             $pdo = $connect->openConnection();
-            $connect->createTable($pdo, 'studentA');
+            $connect->createTable($pdo, 'student');
             $_POST = [];
         }
 
