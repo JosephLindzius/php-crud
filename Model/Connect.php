@@ -59,6 +59,16 @@ class Connect
         return $data;
     }
 
+    public function getClassroom (PDO $pdo, $id) {
+        $sql = 'SELECT * FROM classroom WHERE id = :id';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
     public function getClassroomName (PDO $pdo, $id) {
         $sql = 'SELECT name FROM classroom WHERE id = :id';
         $stmt = $pdo->prepare($sql);
