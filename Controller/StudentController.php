@@ -44,6 +44,14 @@ class StudentController
             $_POST = [];
         }
 
+        //createWHOLETABLE
+        if(array_key_exists('tableCreate', $_POST)) {
+            $connect = new Connect();
+            $pdo = $connect->openConnection();
+            $connect->createTable($pdo, 'student');
+            $_POST = [];
+        }
+
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.

@@ -16,6 +16,7 @@
 <section>
     <p>You can see all the students in this page.</p>
     <form action="#" method="POST"> <button type="submit" name="tableDelete" class="btn btn-secondary btn-sm align-right value='1'">Delete All</button></form>
+    <form action="#" method="POST"> <button type="submit" name="tableCreate" class="btn btn-secondary btn-sm align-right value='1'">Create Table</button></form>
     <div class="text-right mb-2">
         <form action="#" method="POST">
             name : <input type="text" name="name">

@@ -94,6 +94,13 @@ class Connect
         $stmt->execute();
     }
 
+    public function createTable (PDO $pdo, $table) {
+        $sql = 'CREATE TABLE '.$table;
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+    }
+
+
 
 }
 
