@@ -23,11 +23,20 @@
         <li class="list-group-item"><span class="badge badge-info">NAME</span> : <?php echo $user->getName(); ?></li>
         <li class="list-group-item"><span class="badge badge-info">E-MAIL</span> : <?php echo $user->getEmail()?></li>
         <li class="list-group-item"><span class="badge badge-info">CLASS</span> : <?php echo $classroom['name'] ?></li>
+
         <?php
-        if ($status = "student"){
-            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">Assigned teacher</span> : Take all teachers name, put in in the link(to their profile)</li>";
+        if ($status == "student"){
+            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">Assigned teacher</span> : ";
+                foreach ($teachers AS $teacher){
+                    echo "<a href='#'>" . $teacher->getName() . "</a>" . " ";
+                };
+                " </li>";
         } else {
-            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">List of all assigned students</span> : Take all the name (in list), put in in the link(to their profile) </li>";
+            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">Assigned students</span> : ";
+                foreach ($students AS $student){
+                    echo "<a href='#'>" . $student->getName() . "</a>" . " ";
+                };
+                " </li>";
         }
         ?>
 
