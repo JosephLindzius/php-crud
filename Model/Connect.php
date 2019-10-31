@@ -26,6 +26,16 @@ class Connect
         return $data;
     }
 
+    public function getFromTableById (PDO $pdo, $table, $id) {
+        $sql = "SELECT * FROM " . $table. " WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            "id" => $id
+        ]);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
     public function getClassroomName (PDO $pdo, $id) {
         $sql = 'SELECT name FROM classroom WHERE id = :id';
         $stmt = $pdo->prepare($sql);
@@ -40,6 +50,25 @@ class Connect
         $sql = "INSERT INTO student (name, email, class) VALUES (:name, :email, :class)";
         $stmt = $pdo->prepare($sql);
         if ($stmt->execute([
+            'name' => $name,
+            'email' => $email,
+            'class' => $class
+        ])) {
+            echo 'i worked';
+        } else {
+            echo 'failed';
+        };
+        $_POST = [];
+    }
+
+    public function updateStudent (PDO $pdo, $id, $name, $email, $class) {
+
+        $sql = "UPDATE student
+                SET name = :name, email = :email, class = :class
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute([
+            'id' => $id,
             'name' => $name,
             'email' => $email,
             'class' => $class
