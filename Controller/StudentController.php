@@ -14,7 +14,7 @@ class StudentController
         foreach ($students as $i => $student) {
             array_push($studentId, $student['id']);
             $classroomName = $connect->getClassroomName($pdo, $student['class']);
-            $person = new Student($student['id'], $student['name'], $student['email'], $classroomName[0]['name']);
+            $person = new Student($student['id'], $student['name'], $student['email'], $classroomName['name']);
             array_push($allStudents,$person);
         }
         //add student
