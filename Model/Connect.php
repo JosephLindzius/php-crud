@@ -26,13 +26,24 @@ class Connect
         return $data;
     }
 
+    public function getIndividual (PDO $pdo, $table, $id)
+    {
+        $sql = "SELECT * FROM " . $table . " WHERE id = :id ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        $data = $stmt->fetch();
+        return $data;
+    }
+
     public function getClassroomName (PDO $pdo, $id) {
         $sql = 'SELECT name FROM classroom WHERE id = :id';
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'id' => $id
         ]);
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data;
     }
 
@@ -109,7 +120,6 @@ class Connect
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     }
-
 
 
 }
