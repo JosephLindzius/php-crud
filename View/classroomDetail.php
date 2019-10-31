@@ -15,35 +15,26 @@ require  'includes/navbar.php';
 ?>
 
 <section class="m-5">
-    <p>You can a <strong><?php echo $status . " " . $user->getName() ?></strong>'s detail in this page.</p>
+    <p>You can see the class <strong><?php echo  $class->getName() ?></strong>'s detail in this page.</p>
     <ul class="list-group list-group-flush">
         <li class="list-group-item">
-            <button type="button" class="btn btn-outline-dark btn-sm" name="edit" value="<?php echo $user->getId(); ?>">Edit</button>
-            <button type="button" class="btn btn-outline-dark btn-sm" name="delete" value="<?php echo $user->getId(); ?>">Delete</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" name="edit" value="<?php echo $class->getId(); ?>">Edit</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" name="delete" value="<?php echo $class->getId(); ?>">Delete</button>
         </li>
-        <li class="list-group-item"><span class="badge badge-info">ID</span> : <?php echo $user->getId(); ?></li>
-        <li class="list-group-item"><span class="badge badge-info">NAME</span> : <?php echo $user->getName(); ?></li>
-        <li class="list-group-item"><span class="badge badge-info">E-MAIL</span> : <?php echo $user->getEmail()?></li>
-        <li class="list-group-item"><span class="badge badge-info">CLASS</span> : <?php echo $classroom['name'] ?></li>
+        <li class="list-group-item"><span class="badge badge-info">ID</span> : <?php echo $class->getId(); ?></li>
+        <li class="list-group-item"><span class="badge badge-info">NAME</span> : <?php echo $class->getName(); ?></li>
+        <li class="list-group-item"><span class="badge badge-info">E-MAIL</span> : <?php echo $class->getLocation()?></li>
 
-        <?php
-        if ($status == "student"){
-            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">Assigned teacher</span> : ";
-                foreach ($teachers AS $teacher){
-                    echo "<a href='#'>" . $teacher->getName() . "</a>" . " ";
-                };
-                " </li>";
-        } else {
-            echo "<li class=\"list-group-item\"><span class=\"badge badge-info\">Assigned students</span> : ";
-                foreach ($students AS $student){
-                    echo "<a href='#'>" . $student->getName() . "</a>" . " ";
-                };
-                " </li>";
-        }
-        ?>
-
-
-
+        <li class="list-group-item"><span class="badge badge-info">TEACHER(S)</span> :
+            <?php foreach ($teachers AS $teacher){
+            echo "<a href='#'>" . $teacher->getName() . "</a>" . " ";
+            }?>
+        </li>
+        <li class="list-group-item"><span class="badge badge-info">STUDENT(S)</span> :
+            <?php foreach ($students AS $student){
+                echo "<a href='#'>" . $student->getName() . "</a>" . " ";
+            }?>
+        </li>
 
     </ul>
 </section>
