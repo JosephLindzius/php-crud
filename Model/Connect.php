@@ -26,6 +26,17 @@ class Connect
         return $data;
     }
 
+    public function getPeopleByClassId (PDO $pdo, $table, $id)
+    {
+        $sql = "SELECT * FROM " . $table . " WHERE class = :id ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id' => $id
+        ]);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    }
+
     public function getIndividual (PDO $pdo, $table, $id)
     {
         $sql = "SELECT * FROM " . $table . " WHERE id = :id ";
